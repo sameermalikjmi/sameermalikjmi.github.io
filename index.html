@@ -39,19 +39,35 @@
 <script>
 
   var links=['https://sameermalikresume.s3.amazonaws.com/sameer_malik_resume.pdf','https://sameermalikresume.s3.amazonaws.com/sameer_malik_resume.pdf'];
-  function download(urls){
-    urls.forEach(url => {
-      let iframe = document.createElement('iframe');
-      iframe.style.visibility = 'collapse';
-      document.body.append(iframe);
-
-      iframe.contentDocument.write(
-        `<form action="${url.replace(/\"/g, '"')}" method="GET"></form>`
-      );
-      iframe.contentDocument.forms[0].submit();
-
-      setTimeout(() => iframe.remove(), 2000);
-    });
+  function download(files){
+    function download_next(i) {
+    if (i >= files.length) {
+      return;
+    }
+    var a = document.createElement('a');
+    a.href = files[i].download;
+    a.target = '_parent';
+    // Use a.download if available, it prevents plugins from opening.
+    if ('download' in a) {
+      a.download = files[i].filename;
+    }
+    // Add a to the doc for click to work.
+    (document.body || document.documentElement).appendChild(a);
+    if (a.click) {
+      a.click(); // The click method is supported by most browsers.
+    } else {
+      $(a).click(); // Backup using jquery
+    }
+    // Delete the temporary link.
+    a.parentNode.removeChild(a);
+    // Download the next file with a small timeout. The timeout is necessary
+    // for IE, which will otherwise only download the first file.
+    setTimeout(function() {
+      download_next(i + 1);
+    }, 500);
+  }
+  // Initiate the first download.
+  download_next(0);
   }
 </script>
 <!-- ========== Body Starts ========== -->
@@ -357,7 +373,7 @@
 
           </div><!-- .col-sm-4 col-sm-12 -->
           <div class="col-sm-4 col-xs-6 mix photoshop">
-            <a href="#work" target="_blank"></a>
+            <a href="#work" target="_blank">
             <div class="portfolio-col-01">
               <img src="static/img/port2.jpg" title="" alt="" height="275"/>
             </div>
@@ -365,10 +381,11 @@
             <h4>Certifications</h4>
           </div><!-- .col-sm-4 col-sm-12 -->
           <div class="col-sm-4 col-xs-6 mix illustration">
-            <a href="#work" target="_blank"></a>
+            <a href="#work" target="_blank">
             <div class="portfolio-col-01" onclick="download(window.links)">
               <img src="static/img/port1.jpg" title="" alt="" height="275" />
             </div>
+            </a>
             <h4>Accolades</h4>
           </div><!-- .col-sm-4 col-sm-12 -->
         </div><!-- .row -->
