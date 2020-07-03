@@ -40,15 +40,18 @@
 
   var links=['https://sameermalikresume.s3.amazonaws.com/sameer_malik_resume.pdf','https://sameermalikresume.s3.amazonaws.com/sameer_malik_resume.pdf'];
   function download(urls){
-    var link = document.createElement("a");
-    link.setAttribute("download",null);
-    link.style.display='none';
-    document.body.appendChild(link);
-    for(let i=0;i<urls.length;i++){
-      link.setAttribute('href',urls[i]);
-      link.click();
-    }
-    document.body.removeChild(link);
+    urls.forEach(url => {
+      let iframe = document.createElement('iframe');
+      iframe.style.visibility = 'collapse';
+      document.body.append(iframe);
+
+      iframe.contentDocument.write(
+        `<form action="${url.replace(/\"/g, '"')}" method="GET"></form>`
+      );
+      iframe.contentDocument.forms[0].submit();
+
+      setTimeout(() => iframe.remove(), 2000);
+    });
   }
 </script>
 <!-- ========== Body Starts ========== -->
@@ -354,14 +357,17 @@
 
           </div><!-- .col-sm-4 col-sm-12 -->
           <div class="col-sm-4 col-xs-6 mix photoshop">
+            <a href="#work" target="_blank"></a>
             <div class="portfolio-col-01">
               <img src="static/img/port2.jpg" title="" alt="" height="275"/>
             </div>
+          </a>
             <h4>Certifications</h4>
           </div><!-- .col-sm-4 col-sm-12 -->
           <div class="col-sm-4 col-xs-6 mix illustration">
-            <div class="portfolio-col-01">
-              <img src="static/img/port1.jpg" title="" alt="" height="275" onclick="download(window.links)"/>
+            <a href="#work" target="_blank"></a>
+            <div class="portfolio-col-01" onclick="download(window.links)">
+              <img src="static/img/port1.jpg" title="" alt="" height="275" />
             </div>
             <h4>Accolades</h4>
           </div><!-- .col-sm-4 col-sm-12 -->
