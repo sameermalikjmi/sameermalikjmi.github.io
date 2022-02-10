@@ -1,12 +1,13 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content=" - Responsive Personal vCard Template">
   <meta name="keywords"
-        content="Martin Luther, resume, cv, portfolio, personal, developer, designer, onepage, clean, modern, velocity, web">
+    content="Martin Luther, resume, cv, portfolio, personal, developer, designer, onepage, clean, modern, velocity, web">
   <meta name="author" content="Martin">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
@@ -16,12 +17,12 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i"
-        rel="stylesheet">
+    rel="stylesheet">
 
   <!-- End -->
 
   <!-- Plugin Css -->
-   <link href="static/plugin/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/plugin/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="static/plugin/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="static/plugin/owl-carousel/css/owl.carousel.min.css" rel="stylesheet">
   <!-- End -->
@@ -38,413 +39,535 @@
 </head>
 <script>
 
-  var links=['https://sameermalikresume.s3.amazonaws.com/sameer_malik_resume_wpi.pdf','https://sameermalikresume.s3.amazonaws.com/sameer_malik_resume_wpi.pdf'];
-  function download(files){
+  var links = ['https://sameermalikresume.s3.amazonaws.com/sameer_malik_resume_wpi.pdf', 'https://sameermalikresume.s3.amazonaws.com/sameer_malik_resume_wpi.pdf'];
+  function download(files) {
     function download_next(i) {
-    if (i >= files.length) {
-      return;
+      if (i >= files.length) {
+        return;
+      }
+      var a = document.createElement('a');
+      a.href = files[i].download;
+      a.target = '_parent';
+      // Use a.download if available, it prevents plugins from opening.
+      if ('download' in a) {
+        a.download = files[i].filename;
+      }
+      // Add a to the doc for click to work.
+      (document.body || document.documentElement).appendChild(a);
+      if (a.click) {
+        a.click(); // The click method is supported by most browsers.
+      } else {
+        $(a).click(); // Backup using jquery
+      }
+      // Delete the temporary link.
+      a.parentNode.removeChild(a);
+      // Download the next file with a small timeout. The timeout is necessary
+      // for IE, which will otherwise only download the first file.
+      setTimeout(function () {
+        download_next(i + 1);
+      }, 500);
     }
-    var a = document.createElement('a');
-    a.href = files[i].download;
-    a.target = '_parent';
-    // Use a.download if available, it prevents plugins from opening.
-    if ('download' in a) {
-      a.download = files[i].filename;
-    }
-    // Add a to the doc for click to work.
-    (document.body || document.documentElement).appendChild(a);
-    if (a.click) {
-      a.click(); // The click method is supported by most browsers.
-    } else {
-      $(a).click(); // Backup using jquery
-    }
-    // Delete the temporary link.
-    a.parentNode.removeChild(a);
-    // Download the next file with a small timeout. The timeout is necessary
-    // for IE, which will otherwise only download the first file.
-    setTimeout(function() {
-      download_next(i + 1);
-    }, 500);
-  }
-  // Initiate the first download.
-  download_next(0);
+    // Initiate the first download.
+    download_next(0);
   }
 </script>
 <!-- ========== Body Starts ========== -->
+
 <body>
-<div id="loading">
-  <div class="load-circle"><span class="one"></span></div>
-</div>
-
-    
-<!-- ========== Header Starts ========== -->
-<header class="header">
-  <nav class="navbar">
-    <div class="container">
-      <div class="navbar-header">
-        <!-- Mobile Toggle -->
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <!-- / Mobile Toggle -->
-
-        <!-- Logo  -->
-        <h1 class="logo">
-          <a href="#">Sameer Malik</a>
-        </h1>
-        <!-- / Logo  -->
-      </div>
-      <!-- Navbar -->
-      <div id="navbar" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="current"><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Expertise</a></li>
-          <li><a href="#resume">Resume</a></li>
-          <li><a href ="#projects">Projects</a></li>
-          <li><a href="#work">Accomplishment</a></li>
-        </ul>
-      </div>
-      <!-- / Navbar -->
-    </div>
-  </nav>
-</header>
-<!-- ========== End Of Header ========== -->
-
-<!-- ========== Home ========== -->
-<section id="home" class="particles-box full-screen bg-cover bg-no-repeat"
-         style="background-image: url(static/img/banner-2.jpg); background-repeat: no-repeat;
-    background-size: 100%;">
-  <div class="container">
-    <div class="banner-center-text">
-      <h1><span class="font-w-300 color-white">I'm</span> Sameer Malik</h1>
-      <p>Robotics Grad| Software Engineer| WPI| HSBC| JMI</p>
-    </div>
+  <div id="loading">
+    <div class="load-circle"><span class="one"></span></div>
   </div>
-</section>
-<!-- ========== End Of Home ========== -->
 
-<!-- ========== About Us ========== -->
-<section id="about" class="section skills-box">
-  <!-- Container -->
-  <div class="container">
-    <div class="section-title-01">
-      <h2>About Me</h2>
-      <p><strong>Hello! i'm Sameer Malik</strong> I am passionate about seemless interaction between technologies and people. I am interested and open to work in such fields</p>
-    </div><!-- .section-title -->
 
-    <div class="about-me-box">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="avtar">
-            <img src="static/img/sameer1.jpg">
-          </div>
+  <!-- ========== Header Starts ========== -->
+  <header class="header">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <!-- Mobile Toggle -->
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+            aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- / Mobile Toggle -->
+
+          <!-- Logo  -->
+          <h1 class="logo">
+            <a href="#">Sameer Malik</a>
+          </h1>
+          <!-- / Logo  -->
         </div>
-        <div class="col-md-4">
-          <h2>Information</h2>
-          <ul class="about-me">
-            <li><strong>Name : </strong> Sameer Malik</li>
-            <li><strong>Birthday : </strong>07 December 1995</li>
-            <li><strong>Phone : </strong>7742326879</li>
-            <li><strong>E-mail : </strong>sameer441317@gmail.com</li>
+        <!-- Navbar -->
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="current"><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Expertise</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#work">Accomplishment</a></li>
           </ul>
-          <div class="social-link">
-            <ul>
-              <li><a href="https://github.com/sameermalikjmi" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
-              <li><a href="https://www.linkedin.com/in/sameer-malik-29b2bb11a/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+        </div>
+        <!-- / Navbar -->
+      </div>
+    </nav>
+  </header>
+  <!-- ========== End Of Header ========== -->
+
+  <!-- ========== Home ========== -->
+  <section id="home" class="particles-box full-screen bg-cover bg-no-repeat" style="background-image: url(static/img/banner-2.jpg); background-repeat: no-repeat;
+    background-size: 100%;">
+    <div class="container">
+      <div class="banner-center-text">
+        <h1><span class="font-w-300 color-white">I'm</span> Sameer Malik</h1>
+        <p>Robotics Grad| Software Engineer| WPI| HSBC| JMI</p>
+      </div>
+    </div>
+  </section>
+  <!-- ========== End Of Home ========== -->
+
+  <!-- ========== About Us ========== -->
+  <section id="about" class="section skills-box">
+    <!-- Container -->
+    <div class="container">
+      <div class="section-title-01">
+        <h2>About Me</h2>
+        <p><strong>Hello! i'm Sameer Malik</strong> I am passionate about seemless interaction between technologies and
+          people. I am interested and open to work in such fields</p>
+      </div><!-- .section-title -->
+
+      <div class="about-me-box">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="avtar">
+              <img src="static/img/sameer1.jpg">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <h2>Information</h2>
+            <ul class="about-me">
+              <li><strong>Name : </strong> Sameer Malik</li>
+              <li><strong>Birthday : </strong>07 December 1995</li>
+              <li><strong>Phone : </strong>7742326879</li>
+              <li><strong>E-mail : </strong>sameer441317@gmail.com</li>
             </ul>
-          </div><!-- .social-link -->
-          <div class="about-actions">
-            <a href="mailto:sameer441317@gmail.com" class="m-btn-01 lets-talk">contact me <i class="fa fa-arrow-right"></i></a>
-            <a target="_blank" href="https://sameermalikresume.s3.amazonaws.com/sameer_malik_resume_wpi.pdf
+            <div class="social-link">
+              <ul>
+                <li><a href="https://github.com/sameermalikjmi" target="_blank"><i class="fa fa-github"
+                      aria-hidden="true"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/sameer-malik-29b2bb11a/" target="_blank"><i
+                      class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+              </ul>
+            </div><!-- .social-link -->
+            <div class="about-actions">
+              <a href="mailto:sameer441317@gmail.com" class="m-btn-01 lets-talk">contact me <i
+                  class="fa fa-arrow-right"></i></a>
+              <a target="_blank" href="https://sameermalikresume.s3.amazonaws.com/sameer_malik_resume_wpi.pdf
             " class="m-btn-01">download cv <i class="fa fa-arrow-right"></i></a>
+            </div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <h2>Skills</h2>
-           <div class="skillbar skillbar-style-1" data-percent="80">
-            <span class="skillbar-title"><i class= "fa fa-cog fa-spin fa-1.5x fa-fw" ></i>Machine learning and Data Analsis</span>
-            <p class="skillbar-bar bg-theme"></p>
+          <div class="col-md-4">
+            <h2>Skills</h2>
+            <div class="skillbar skillbar-style-1" data-percent="80">
+              <span class="skillbar-title"><i class="fa fa-cog fa-spin fa-1.5x fa-fw"></i>Machine learning and Data
+                Analsis</span>
+              <p class="skillbar-bar bg-theme"></p>
+            </div>
+            <div class="skillbar skillbar-style-1" data-percent="80">
+              <span class="skillbar-title"><i class="fa fa-cog fa-spin fa-1.5x fa-fw"></i> Reinforcement and Deep learning Models
+                </span>
+              <p class="skillbar-bar bg-theme"></p>
+            </div>
+            <div class="skillbar skillbar-style-1" data-percent="80">
+              <span class="skillbar-title"><i class="fa fa-cog fa-spin fa-1.5x fa-fw"></i>Computer Vision and
+                Robotics</span>
+              <p class="skillbar-bar bg-theme"></p>
+            </div>
+            <div class="skillbar skillbar-style-1" data-percent="70">
+              <span class="skillbar-title"><i class="fa fa-cog fa-spin fa-1.5x fa-fw"></i>Advanced Mathematical models</span>
+              <p class="skillbar-bar bg-theme"></p>
+            </div>
+            <div class="skillbar skillbar-style-1" data-percent="85">
+              <span class="skillbar-title"><i class="fa fa-cog fa-spin fa-1.5x fa-fw"></i> Javascript</span>
+              <p class="skillbar-bar bg-theme"></p>
+            </div>
+            <!-- End Skill Bar -->
+
+            <div class="skillbar skillbar-style-1" data-percent="85">
+              <span class="skillbar-title"><i class="fa fa-cog fa-spin fa-1.5x fa-fw"></i>Python</span>
+              <p class="skillbar-bar bg-theme"></p>
+            </div>
+            <!-- End Skill Bar -->
+
+            <div class="skillbar skillbar-style-1" data-percent="85">
+              <span class="skillbar-title"><i class="fa fa-cog fa-spin fa-1.5x fa-fw"></i>Java</span>
+              <p class="skillbar-bar bg-theme"></p>
+            </div>
+            <!-- End Skill Bar -->
+
+            <div class="skillbar skillbar-style-1" data-percent="85">
+              <span class="skillbar-title"><i class="fa fa-cog fa-spin fa-1.5x fa-fw"></i>AngularJs</span>
+              <p class="skillbar-bar bg-theme"></p>
+            </div>
+            <!-- End Skill Bar -->
+
+            <div class="skillbar skillbar-style-1" data-percent="80">
+              <span class="skillbar-title"><i class="fa fa-cog fa-spin fa-1.5x fa-fw"></i>React JS</span>
+              <p class="skillbar-bar bg-theme"></p>
+            </div>
+            <!-- End Skill Bar -->
+           
+            <div class="skillbar skillbar-style-1" data-percent="85">
+              <span class="skillbar-title"><i class="fa fa-cog fa-spin fa-1.5x fa-fw"></i>HTML5 And CSS3</span>
+              <p class="skillbar-bar bg-theme"></p>
+            </div>
+            <!-- End Skill Bar -->
+
+
+            <!-- End Skill Bar -->
+
           </div>
+        </div><!-- .Row -->
+      </div> <!-- about me -->
+    </div><!-- .Container -->
 
-          <div class="skillbar skillbar-style-1" data-percent="80">
-            <span class="skillbar-title"><i class= "fa fa-cog fa-spin fa-1.5x fa-fw" ></i>Computer Vision and Robotics</span>
-            <p class="skillbar-bar bg-theme"></p>
-          </div>
-          <div class="skillbar skillbar-style-1" data-percent="85">
-            <span class="skillbar-title"><i class= "fa fa-cog fa-spin fa-1.5x fa-fw" ></i> Javascript</span>
-            <p class="skillbar-bar bg-theme"></p>
-          </div>
-          <!-- End Skill Bar -->
+  </section>
+  <!-- ========== End Of About Us ========== -->
 
-          <div class="skillbar skillbar-style-1" data-percent="85">
-            <span class="skillbar-title"><i class= "fa fa-cog fa-spin fa-1.5x fa-fw" ></i>Python</span>
-            <p class="skillbar-bar bg-theme"></p>
-          </div>
-          <!-- End Skill Bar -->
+  <!-- ========== Services ========== -->
+  <section id="services" class="section grey-bg">
+    <div class="container">
 
-          <div class="skillbar skillbar-style-1" data-percent="85">
-            <span class="skillbar-title"><i class= "fa fa-cog fa-spin fa-1.5x fa-fw" ></i>Java</span>
-            <p class="skillbar-bar bg-theme"></p>
-          </div>
-          <!-- End Skill Bar -->
+      <div class="section-title-01">
+        <h2>My Expertise</h2>
+      </div><!-- .section-title -->
 
-          <div class="skillbar skillbar-style-1" data-percent="85">
-            <span class="skillbar-title"><i class= "fa fa-cog fa-spin fa-1.5x fa-fw" ></i>AngularJs</span>
-            <p class="skillbar-bar bg-theme"></p>
-          </div>
-          <!-- End Skill Bar -->
-
-          <div class="skillbar skillbar-style-1" data-percent="80">
-            <span class="skillbar-title"><i class= "fa fa-cog fa-spin fa-1.5x fa-fw" ></i>React JS</span>
-            <p class="skillbar-bar bg-theme"></p>
-          </div>
-          <!-- End Skill Bar -->
-
-          <div class="skillbar skillbar-style-1" data-percent="85">
-            <span class="skillbar-title"><i class= "fa fa-cog fa-spin fa-1.5x fa-fw" ></i>HTML5 And CSS3</span>
-            <p class="skillbar-bar bg-theme"></p>
-          </div>
-          <!-- End Skill Bar -->
-
-         
-          <!-- End Skill Bar -->
-
-        </div>
-      </div><!-- .Row -->
-    </div> <!-- about me -->
-  </div><!-- .Container -->
-
-</section>
-<!-- ========== End Of About Us ========== -->
-
-<!-- ========== Services ========== -->
-<section id="services" class="section grey-bg">
-  <div class="container">
-
-    <div class="section-title-01">
-      <h2>My Expertise</h2>
-    </div><!-- .section-title -->
-
-    <div class="row">
-       <div class="col-sm-4">
-        <div class="service-box-01">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="service-box-01">
             <span class="sb-icon">
               <i class="fa fa-code fa-2x" aria-hidden="true"></i>
             </span>
-          <h4>DEVELOPMENT</h4>
-          <div class="sb-desc">
-            <p>I have developed and worked on Self Driving Cars, Drones, Bots and seemless user interaction for websites .</p>
-          </div><!-- .sb-desc -->
-        </div><!-- .service-box -->
-      </div><!-- .col-sm-4 -->
-      
-      <div class="col-sm-4">
-        <div class="service-box-01">
+            <h4>DEVELOPMENT</h4>
+            <div class="sb-desc">
+              <p>I have developed and worked on Self Driving Cars, Drones, Bots and seemless user interaction for
+                websites .</p>
+            </div><!-- .sb-desc -->
+          </div><!-- .service-box -->
+        </div><!-- .col-sm-4 -->
+
+        <div class="col-sm-4">
+          <div class="service-box-01">
             <span class="sb-icon">
               <i class="fa fa-paint-brush fa-2x" aria-hidden="true"></i>
             </span>
-          <h4>WEB DESIGN</h4>
-          <div class="sb-desc">
-            <p>I believe in developing secure websites and interfaces. I have been following the latest standards like OWASP, represented and winning in various competitions by finding and removing vulnerabilities. </p>
-          </div><!-- .sb-desc -->
-        </div><!-- .service-box -->
-      </div><!-- .col-sm-4 -->
+            <h4>WEB DESIGN</h4>
+            <div class="sb-desc">
+              <p>I believe in developing secure websites and interfaces. I have been following the latest standards like
+                OWASP, represented and winning in various competitions by finding and removing vulnerabilities. </p>
+            </div><!-- .sb-desc -->
+          </div><!-- .service-box -->
+        </div><!-- .col-sm-4 -->
 
-     
 
-      <div class="col-sm-4">
-        <div class="service-box-01">
+
+        <div class="col-sm-4">
+          <div class="service-box-01">
             <span class="sb-icon">
               <i class="fa fa-mobile fa-2x" aria-hidden="true"></i>
             </span>
-          <h4>Tools</h4>
-          <div class="sb-desc">
-            <p>GIT, G3, AWS, Docker, RTC, Jenkins, Maven, Gulp, Webpack, Splunk, Tableau, Confluence, Jest, Mocha, Checkmarx, Sonar, OpenCV, NumpY, Pandas </p>
-          </div><!-- .sb-desc -->
-        </div><!-- .service-box -->
-      </div><!-- .col-sm-4 -->
+            <h4>Tools</h4>
+            <div class="sb-desc">
+              <p>GIT, G3, AWS, Docker, RTC, Jenkins, Maven, Gulp, Webpack, Splunk, Tableau, Confluence, Jest, Mocha,
+                Checkmarx, Sonar, OpenCV, NumpY, Pandas </p>
+            </div><!-- .sb-desc -->
+          </div><!-- .service-box -->
+        </div><!-- .col-sm-4 -->
 
-    </div><!-- .row -->
-  </div><!-- .container -->
-</section>
-<!-- ========== End Of Services ========== -->
+      </div><!-- .row -->
+    </div><!-- .container -->
+  </section>
+  <!-- ========== End Of Services ========== -->
 
-<!-- ========== Resume  ========== -->
-<section id="resume" class="section">
-  <div class="container">
-    <div class="section-title-01">
-      <h2>My Resume</h2>
-    </div><!-- .section-title -->
+  <!-- ========== Resume  ========== -->
+  <section id="resume" class="section">
+    <div class="container">
+      <div class="section-title-01">
+        <h2>My Resume</h2>
+      </div><!-- .section-title -->
 
-    <div class="row">
-      <div class="col-sm-6 col-xs-12">
-          
-        <div class="resume-box-01">
-          <h4><i class="fa fa-briefcase"></i> WORK</h4>
-          
-          <div class="resume-row">
-            <div class="hoverDiv">
-            <h5><i class="fa fa-briefcase"></i>HSBC</h5>
-            <h6>Software Engineer</h6>
-            <label>July 2018 - July 2021</label>
-            <span id= "somehover-effect">
-                Experienced in the full life cycle of the software. Actively involved in the continous delievery of latest features, working on migration of on-premises content to AWS.
-            </span>
-          </div><!-- .resume-row -->
-        </div>
-        
-          <div class="resume-row">
+      <div class="row">
+        <div class="col-sm-6 col-xs-12">
+
+          <div class="resume-box-01">
+            <h4><i class="fa fa-briefcase"></i> WORK</h4>
+
+            <div class="resume-row">
               <div class="hoverDiv">
-            <h5><i class="fa fa-briefcase"></i> Omnipresent Technologies</h5>
-            <h6>Machine learning intern</h6>
-            <label>MAY 2017 - JULY 2017</label>
-            <span id= "somehover-effect">
-                The internship revolved around developing smart and machine learning models involving perception for robots and self driving cars
-            </span>
-          </div><!-- .resume-row -->
-        </div>
-          <div class="resume-row">
-            <div class="hoverDiv">
-            <h5><i class="fa fa-briefcase"></i>ASET Research Institute </h5>
-            <h6>Machine learning intern</h6>
-            <label>DEC 2016 - FEB 2017</label>
-            <span id= "somehover-effect">
-                During this period worked on world's finest equipmemts like Mind controlled wheelchairs, as side projects worked on Prosthetics
-            </span>
+                <h5><i class="fa fa-briefcase"></i>HSBC</h5>
+                <h6>Software Engineer</h6>
+                <label>July 2018 - July 2021</label>
+                <span id="somehover-effect">
+                  Experienced in the full life cycle of the software. Actively involved in the continous delievery of
+                  latest features, working on migration of on-premises content to AWS.
+                </span>
+              </div><!-- .resume-row -->
             </div>
-          </div>
-        </div><!-- .resume-box -->
-      </div><!-- .col-sm-6 col-xs-12 -->
 
-      <div class="col-sm-6 col-xs-12">
-        <div class="resume-box-01">
-          <h4><i class="fa fa-graduation-cap"></i> EDUCATION</h4>
-          <div class="resume-row">
-            <div class="hoverDiv">
-            <h5><i class="fa fa-graduation-cap"></i> Worcester Polytechnic Institute</h5>
-            <h6>Robotics Engineering </h6>
-            <label>Augsut 2021- Present</label>
-            <span id= "somehover-effect">
-              Major interest in software development & design for machine learning and robotics.
-            </span>
-           </div>
-          </div><!-- .resume-row -->
-          <div class="resume-row">
+            <div class="resume-row">
               <div class="hoverDiv">
-            <h5><i class="fa fa-graduation-cap"></i>Jamia Millia Islamia</h5>
-            <h6>Mechanical Engineering</h6>
-            <label>Aug 2014 - JUNE 2018</label>
-            <span id= "somehover-effect">
-                Took several classroom trainings targeting Machine Learning , Data Structures and Algorithms.
-                Gave seminars on computational complexity of self driving cars concepts.
-            </span>
-          </div><!-- .resume-row -->
-        </div>
-          
-        
-      </div><!-- .col-sm-6 col-xs-12 -->
-    </div><!-- .row -->
-  </div><!-- .container -->
-</section>
-<!-- ========== End Of Resume ========== -->
+                <h5><i class="fa fa-briefcase"></i> Omnipresent Technologies</h5>
+                <h6>Machine learning intern</h6>
+                <label>MAY 2017 - JULY 2017</label>
+                <span id="somehover-effect">
+                  The internship revolved around developing smart and machine learning models involving perception for
+                  robots and self driving cars
+                </span>
+              </div><!-- .resume-row -->
+            </div>
+            <div class="resume-row">
+              <div class="hoverDiv">
+                <h5><i class="fa fa-briefcase"></i>ASET Research Institute </h5>
+                <h6>Machine learning intern</h6>
+                <label>DEC 2016 - FEB 2017</label>
+                <span id="somehover-effect">
+                  During this period worked on world's finest equipmemts like Mind controlled wheelchairs, as side
+                  projects worked on Prosthetics
+                </span>
+              </div>
+            </div>
+          </div><!-- .resume-box -->
+        </div><!-- .col-sm-6 col-xs-12 -->
+
+        <div class="col-sm-6 col-xs-12">
+          <div class="resume-box-01">
+            <h4><i class="fa fa-graduation-cap"></i> EDUCATION</h4>
+            <div class="resume-row">
+              <div class="hoverDiv">
+                <h5><i class="fa fa-graduation-cap"></i> Worcester Polytechnic Institute</h5>
+                <h6>Robotics Engineering </h6>
+                <label>Augsut 2021- Present</label>
+                <span id="somehover-effect">
+                  Major interest in software development & design for machine learning and robotics.
+                </span>
+              </div>
+            </div><!-- .resume-row -->
+            <div class="resume-row">
+              <div class="hoverDiv">
+                <h5><i class="fa fa-graduation-cap"></i>Jamia Millia Islamia</h5>
+                <h6>Mechanical Engineering</h6>
+                <label>Aug 2014 - JUNE 2018</label>
+                <span id="somehover-effect">
+                  Took several classroom trainings targeting Machine Learning , Data Structures and Algorithms.
+                  Gave seminars on computational complexity of self driving cars concepts.
+                </span>
+              </div><!-- .resume-row -->
+            </div>
+
+
+          </div><!-- .col-sm-6 col-xs-12 -->
+        </div><!-- .row -->
+      </div><!-- .container -->
+  </section>
+  <!-- ========== End Of Resume ========== -->
 
   <section id="projects" class="section">
-  <div class="container">
-    <div class="section-title-01">
-      <h2>Projects</h2>
-      <p>Coming Soon</p>
+    <div class="container">
+      <div class="section-title-01">
+        <h2>Projects</h2>
+
+
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="service-box-01">
+            <span class="sb-icon">
+              <i class="fa fa-code fa-2x" aria-hidden="true"></i>
+            </span>
+            <h4>ALGORITHM MANAGEMENT SYSTEM</h4>
+            <div class="sb-desc">
+
+              <a href="http://sameer509.s3-website.us-east-2.amazonaws.com/">Ontological Description Based System</a>
+            </div><!-- .sb-desc -->
+          </div><!-- .service-box -->
+        </div><!-- .col-sm-4 -->
+
+        <div class="col-sm-4">
+          <div class="service-box-01">
+            <span class="sb-icon">
+              <i class="fa fa-paint-brush fa-2x" aria-hidden="true"></i>
+            </span>
+            <h4>OBJECT DETECTION AND TRACKING</h4>
+            <div class="sb-desc">
+              <a href ="https://resumesameer.s3.us-east-2.amazonaws.com/cv_report.pdf ">Yolo and Geometric Models</a>
+            </div><!-- .sb-desc -->
+          </div><!-- .service-box -->
+        </div><!-- .col-sm-4 -->
+
+
+
+        <div class="col-sm-4">
+          <div class="service-box-01">
+            <span class="sb-icon">
+              <i class="fa fa-mobile fa-2x" aria-hidden="true"></i>
+            </span>
+            <h4>Sentiment Analsis</h4>
+            <div class="sb-desc">
+              <a href="https://github.com/sameermalikjmi/voice-analysis/tree/master/Hackathon"> Link</a>
+            </div><!-- .sb-desc -->
+          </div><!-- .service-box -->
+        </div><!-- .col-sm-4 -->
+
+      </div><!-- .row -->
+
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="service-box-01">
+            <span class="sb-icon">
+              <i class="fa fa-code fa-2x" aria-hidden="true"></i>
+            </span>
+            <h4>Deep learning Toolkit</h4>
+            <div class="sb-desc">
+
+              <a href ="https://github.com/sameermalikjmi/deeplearning">Helping functions and Models</a>
+            </div><!-- .sb-desc -->
+          </div><!-- .service-box -->
+        </div><!-- .col-sm-4 -->
+
+        <div class="col-sm-3">
+          <div class="service-box-01">
+            <span class="sb-icon">
+              <i class="fa fa-code fa-2x" aria-hidden="true"></i>
+            </span>
+            <h4>Puzzles</h4>
+            <div class="sb-desc">
+
+              <a href ="https://github.com/sameermalikjmi/puzzle">Link</a>
+            </div><!-- .sb-desc -->
+          </div><!-- .service-box -->
+        </div><!-- .col-sm-4 -->
+        <div class="col-sm-3">
+          <div class="service-box-01">
+            <span class="sb-icon">
+              <i class="fa fa-code fa-2x" aria-hidden="true"></i>
+            </span>
+            <h4>Reinforcement Learning Projects</h4>
+            <div class="sb-desc">
+
+              <a href ="https://github.com/sameermalikjmi/reinforcement-learning">Link</a>
+            </div><!-- .sb-desc -->
+          </div><!-- .service-box -->
+        </div><!-- .col-sm-4 -->
+
+        <div class="col-sm-3">
+          <div class="service-box-01">
+            <span class="sb-icon">
+              <i class="fa fa-code fa-2x" aria-hidden="true"></i>
+            </span>
+            <h4>Robotics Models</h4>
+            <div class="sb-desc">
+             <h6>Fundamentals and ROS</h6>
+              <a href ="https://github.com/sameermalikjmi/ROS-and-Robotics/tree/main">Link</a>
+              <h6>Dynamics</h6>
+              <a href ="https://github.com/sameermalikjmi/dynamics-and-matlab-">Link</a>
+            </div><!-- .sb-desc -->
+          </div><!-- .service-box -->
+        </div><!-- .col-sm-4 -->
+      </div>
     </div>
+
+  </section>
+
+
+
+  <!-- ========== Work ========== -->
+  <section id="work" class="section">
+    <div class="container">
+      <div class="section-title-01">
+        <h2>Technical Accomplishments</h2>
+      </div><!-- .section-title -->
+
+      <div class="portfolio-box">
+        <div class="portfolio-filter">
+          <div class="row">
+            <div class="col-sm-4 col-xs-6 mix illustration">
+              <a href="https://sameermalikresume.s3.amazonaws.com/sameer_malik_resume_wpi.pdf" target="_blank">
+                <div class="portfolio-col-01">
+                  <img src="static/img/secure.png" title="" alt="" height="275" />
+
+                </div>
+              </a>
+              <h4>Secure Code Warrior Orange Belt</h4>
+
+            </div><!-- .col-sm-4 col-sm-12 -->
+            <div class="col-sm-4 col-xs-6 mix photoshop">
+
+              <div class="portfolio-col-01">
+                <img src="static/img/port2.jpg" title="" alt="" height="275" />
+              </div>
+
+              <h4>Certifications</h4>
+            </div><!-- .col-sm-4 col-sm-12 -->
+            <div class="col-sm-4 col-xs-6 mix illustration">
+
+              <div class="portfolio-col-01">
+                <img src="static/img/port1.jpg" title="" alt="" height="275" />
+              </div>
+
+              <h4>Accolades</h4>
+            </div><!-- .col-sm-4 col-sm-12 -->
+          </div><!-- .row -->
+        </div><!-- .portfolio-filter -->
+
+      </div><!-- .portfolio-box -->
+    </div><!-- .container -->
+  </section>
+  <!-- ========== End Of Work ========== -->
+
+  <!-- ========== Footer ========== -->
+  <footer class="footer">
+    <div class="main-footer text-center">
+      <h4 class="footer-logo">Sameer Malik</h4>
+      <div class="social-link">
+        <ul>
+          <li><a href="https://github.com/sameermalikjmi" target="_blank"><i class="fa fa-github"
+                aria-hidden="true"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/sameer-malik-29b2bb11a/" target="_blank"><i class="fa fa-linkedin"
+                aria-hidden="true"></i></a></li>
+        </ul>
+      </div><!-- .social-link -->
     </div>
-    
-      
-      
+  </footer> <!-- .footer -->
+  <!-- ========== End Of Footer ========== -->
 
+  <!-- Jquery -->
+  <script src="static/js/jquery.js"></script>
+  <!-- End -->
 
-<!-- ========== Work ========== -->
-<section id="work" class="section">
-  <div class="container">
-    <div class="section-title-01">
-      <h2>Technical Accomplishments</h2>
-    </div><!-- .section-title -->
+  <!-- Plugin JS -->
+  <script src="static/plugin/bootstrap/js/bootstrap.js"></script>
+  <!--bootstrap-->
+  <script src="static/plugin/parallax/parallax.min.js"></script><!-- parallax library -->
+  <script src="static/plugin/mixitup/mixitup.min.js"></script><!-- mixitup -->
+  <script src="static/plugin/owl-carousel/js/owl.carousel.min.js"></script><!-- owl-carousel -->
+  <script src="static/plugin/skills-bar/js/skill.bars.jquery.js"></script>
+  <script src="static/plugin/skills-bar/js/skill.js"></script>
+  <!-- skill.bars.jquery -->
+  <script src="static/plugin/particles/particles.min.js"></script>
+  <script src="static/plugin/particles/particles-app.js"></script>
+  <!-- End -->
 
-    <div class="portfolio-box">
-      <div class="portfolio-filter">
-        <div class="row">
-          <div class="col-sm-4 col-xs-6 mix illustration">
-            <a href="https://sameermalikresume.s3.amazonaws.com/sameer_malik_resume_wpi.pdf" target="_blank">
-            <div class="portfolio-col-01">
-              <img src="static/img/secure.png" title="" alt=""  height="275"/ >
-
-            </div>
-          </a>
-            <h4>Secure Code Warrior Orange Belt</h4>
-
-          </div><!-- .col-sm-4 col-sm-12 -->
-          <div class="col-sm-4 col-xs-6 mix photoshop">
-            
-            <div class="portfolio-col-01">
-              <img src="static/img/port2.jpg" title="" alt="" height="275"/>
-            </div>
-          
-            <h4>Certifications</h4>
-          </div><!-- .col-sm-4 col-sm-12 -->
-          <div class="col-sm-4 col-xs-6 mix illustration">
-            
-            <div class="portfolio-col-01" >
-              <img src="static/img/port1.jpg" title="" alt="" height="275" />
-            </div>
-            
-            <h4>Accolades</h4>
-          </div><!-- .col-sm-4 col-sm-12 -->
-        </div><!-- .row -->
-      </div><!-- .portfolio-filter -->
-
-    </div><!-- .portfolio-box -->
-  </div><!-- .container -->
-</section>
-<!-- ========== End Of Work ========== -->
-
-<!-- ========== Footer ========== -->
-<footer class="footer">
-  <div class="main-footer text-center">
-    <h4 class="footer-logo">Sameer Malik</h4>
-    <div class="social-link">
-      <ul>
-        <li><a href="https://github.com/sameermalikjmi" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></li>
-        <li><a href="https://www.linkedin.com/in/sameer-malik-29b2bb11a/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-      </ul>
-    </div><!-- .social-link -->
-  </div>
-</footer> <!-- .footer -->
-<!-- ========== End Of Footer ========== -->
-
-<!-- Jquery -->
-<script src="static/js/jquery.js"></script>
-<!-- End -->
-
-<!-- Plugin JS -->
-<script src="static/plugin/bootstrap/js/bootstrap.js"></script><!--bootstrap-->
-<script src="static/plugin/parallax/parallax.min.js"></script><!-- parallax library -->
-<script src="static/plugin/mixitup/mixitup.min.js"></script><!-- mixitup -->
-<script src="static/plugin/owl-carousel/js/owl.carousel.min.js"></script><!-- owl-carousel -->
-<script src="static/plugin/skills-bar/js/skill.bars.jquery.js"></script>
-<script src="static/plugin/skills-bar/js/skill.js"></script>
-<!-- skill.bars.jquery -->
-<script src="static/plugin/particles/particles.min.js"></script>
-<script src="static/plugin/particles/particles-app.js"></script>
-<!-- End -->
-
-<!-- Theme Js -->
-<script src="static/js/jquery.nav.js"></script>
-<script src="static/js/custom.js"></script>
-<script src="static/js/home.js"></script><!-- Only For Home page -->
-<!-- <script src="style-switcher/style-switcher.js"></script> -->
-<!-- End -->
+  <!-- Theme Js -->
+  <script src="static/js/jquery.nav.js"></script>
+  <script src="static/js/custom.js"></script>
+  <script src="static/js/home.js"></script><!-- Only For Home page -->
+  <!-- <script src="style-switcher/style-switcher.js"></script> -->
+  <!-- End -->
 </body>
 <!-- ========== End of Body ========== -->
+
 </html>
